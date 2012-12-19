@@ -1,0 +1,139 @@
+<?xml version="1.0"?><pr:projects xmlns:pr="http://www.phinc.by/pmc/project" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phinc.by/pmc/project project.xsd">
+	<project id="1" status-id="2">
+		<name><![CDATA[PMC]]></name>
+		<description><![CDATA[Project Management Center]]></description>
+		<customer><![CDATA[epam]]></customer>
+		<planned-start-date>2012-05-03</planned-start-date>
+		<planned-duration>45.5</planned-duration>
+		<actual-start-date>2012-05-03</actual-start-date>
+		<actual-duration></actual-duration>
+	</project>
+	<project id="2" status-id="3">
+		<name><![CDATA[ssdd project]]></name>
+		<description><![CDATA[a]]></description>
+		<customer><![CDATA[epam]]></customer>
+		<planned-start-date>2012-01-01</planned-start-date>
+		<planned-duration>14.0</planned-duration>
+		<actual-start-date>2012-05-03</actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</project>
+	<project id="3" status-id="4">
+		<name><![CDATA[arm dsp]]></name>
+		<description><![CDATA[desc khgp]]></description>
+		<customer><![CDATA[c]]></customer>
+		<planned-start-date>2012-05-05</planned-start-date>
+		<planned-duration>7.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</project>
+<project id="4" status-id="1">
+		<name><![CDATA[Data project]]></name>
+		<description><![CDATA[Data project description]]></description>
+		<customer><![CDATA[dram]]></customer>
+		<planned-start-date>2014-01-11</planned-start-date>
+		<planned-duration>7.4</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="7" status-id="3">
+		<name><![CDATA[some project]]></name>
+		<description><![CDATA[desc of some project]]></description>
+		<customer><![CDATA[somebody]]></customer>
+		<planned-start-date>2012-12-12</planned-start-date>
+		<planned-duration>12.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>12.0</actual-duration>
+
+	</project>
+<project id="8" status-id="3">
+		<name><![CDATA[Remote control]]></name>
+		<description><![CDATA[Remote control system]]></description>
+		<customer><![CDATA[bank]]></customer>
+		<planned-start-date>2014-01-11</planned-start-date>
+		<planned-duration>4.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="9" status-id="1">
+		<name><![CDATA[Search engine]]></name>
+		<description><![CDATA[Very important project]]></description>
+		<customer><![CDATA[dfgd]]></customer>
+		<planned-start-date>2014-01-11</planned-start-date>
+		<planned-duration>14.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="10" status-id="4">
+		<name><![CDATA[UniARM]]></name>
+		<description><![CDATA[train dispatching system]]></description>
+		<customer><![CDATA[rw]]></customer>
+		<planned-start-date>2001-05-14</planned-start-date>
+		<planned-duration>99.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="11" status-id="1">
+		<name><![CDATA[sdfaf]]></name>
+		<description><![CDATA[asdfs]]></description>
+		<customer><![CDATA[sdaf]]></customer>
+		<planned-start-date>2023-03-12</planned-start-date>
+		<planned-duration>33.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="12" status-id="5">
+		<name><![CDATA[New project]]></name>
+		<description><![CDATA[Desc of new project]]></description>
+		<customer><![CDATA[irinka]]></customer>
+		<planned-start-date>2010-10-10</planned-start-date>
+		<planned-duration>1000.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="13" status-id="2">
+		<name><![CDATA[Training center]]></name>
+		<description><![CDATA[Special program for educational institution]]></description>
+		<customer><![CDATA[school]]></customer>
+		<planned-start-date>2001-01-20</planned-start-date>
+		<planned-duration>2002.0</planned-duration>
+		<actual-start-date>2013-06-14</actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="14" status-id="5">
+		<name><![CDATA[ASU]]></name>
+		<description><![CDATA[automated control system]]></description>
+		<customer><![CDATA[rw]]></customer>
+		<planned-start-date>1998-09-11</planned-start-date>
+		<planned-duration>78.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="15" status-id="1">
+		<name><![CDATA[new]]></name>
+		<description><![CDATA[new]]></description>
+		<customer><![CDATA[new]]></customer>
+		<planned-start-date>2023-03-12</planned-start-date>
+		<planned-duration>0.8</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+<project id="16" status-id="1">
+		<name><![CDATA[ACTUAL PROJECT]]></name>
+		<description><![CDATA[CCCCCC]]></description>
+		<customer><![CDATA[LLLLLLLLL]]></customer>
+		<planned-start-date>2023-03-12</planned-start-date>
+		<planned-duration>8.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+
+	</project>
+</pr:projects>

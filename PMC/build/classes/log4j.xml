@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">
+ 
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+ 
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender" >
+       <layout class="org.apache.log4j.PatternLayout" >
+          <param name="ConversionPattern" value="%d{HH:mm:ss.SSS} [%t] %c{1} %x - %m%n" />
+       </layout>
+    </appender>
+    
+    <appender name="LOG-FILE-APPENDER" class="org.apache.log4j.FileAppender">
+    	<param name="File" value="app.log"/>
+    	<param name="Threshold" value="DEBUG" />
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d{ISO8601} [%5p] %c %m at %l%n"/>
+    	</layout>
+    </appender>
+ 
+    <!-- specify the logging level for loggers from other libraries -->
+    <logger name="com.opensymphony" >
+        <level value="DEBUG" />
+    </logger>
+ 
+    <logger name="org.apache.struts2" >
+         <level value="DEBUG" />
+    </logger>
+    
+    <logger name="by.phinc.pmc">
+    	<level value="DEBUG"/>
+    </logger>
+ 
+    <!-- for all other loggers log only debug and above log messages -->
+    <root>
+       <priority value="INFO" />
+       <appender-ref ref="STDOUT" />
+       <appender-ref ref="LOG-FILE-APPENDER"/>
+    </root>
+ 
+</log4j:configuration>

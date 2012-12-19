@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	
+	<constant name="struts.devMode" value="true" /> 
+	<constant name="struts.custom.i18n.resources" value="global-messages"/>
+	<constant name="struts.multipart.saveDir" value="g:/pmc/temp"/>
+	<constant name="struts.multipart.maxSize" value="2000000"/>
+	
+	<package name="default" namespace="/" extends="json-default">
+		
+		<!-- 
+		<result-types>
+			<result-type name="projectsJSON" class="by.phinc.pmc.struts.results.ProjectsJSONResult"></result-type>
+		</result-types>
+		 -->
+		<interceptors>
+			<interceptor name="authentication" class="by.phinc.pmc.action.utils.AuthenticationInterceptor"/>
+			<interceptor name="hibernate" class="by.phinc.pmc.action.utils.HibernateSessionInterceptor"/>
+			<interceptor name="rallback" class="by.phinc.pmc.action.utils.TransactionRallbackInterceptor"/>
+			<interceptor name="accessexception" class="by.phinc.pmc.secure.ExceptionTranslationInterceptor"/>
+			<interceptor name="security" class="by.phinc.pmc.secure.ActionSecurityInterceptor"/>
+			
+			<interceptor-stack name="pmcStack">
+				<interceptor-ref name="exception">
+					<param name="logEnabled">true</param>
+     				<param name="logLevel">DEBUG</param>
+				</interceptor-ref>
+                <!--  
+                <interceptor-ref name="hibernate"/>
+                <interceptor-ref name="rallback"/>   
+                -->            
+				<!-- <interceptor-ref name="authentication"/> -->
+				<interceptor-ref name="accessexception"/>
+				<interceptor-ref name="security"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="debugging"/>
+			</interceptor-stack>
+			
+			<interceptor-stack name="pmcWithoutAuthStack">
+				<interceptor-ref name="exception">
+					<param name="logEnabled">true</param>
+     				<param name="logLevel">DEBUG</param>
+				</interceptor-ref>
+                <!-- 
+                <interceptor-ref name="hibernate"/>
+                <interceptor-ref name="rallback"/>
+                -->
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="debugging"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="pmcStack"/>
+		
+		<global-results>
+			<result name="login">/login.jsp</result>
+			<result name="error">/errorPages/error.jsp</result>
+			<result name="pmcError">/errorPages/pmcError.jsp</result>
+			<result name="illegalProjectAccess" type="chain">Index</result>
+			<result name="accessDeniedError">/errorPages/accessDenied.jsp</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+			<exception-mapping result="pmcError" exception="by.phinc.pmc.exception.PMCException"/>
+			<exception-mapping result="illegalProjectAccess" 
+				exception="by.phinc.pmc.exception.PMCProjectNotAllowesException"/>
+			<exception-mapping result="accessDeniedError" 
+				exception="by.phinc.pmc.exception.PMCAccessDeniedException"/>
+		</global-exception-mappings>
+		
+		<action name="">
+			<result type="redirectAction">LoginForm</result>
+		</action>
+		
+		<!-- LOGIN -->
+		
+		<action name="LoginForm">
+			<interceptor-ref name="pmcWithoutAuthStack"/>
+			<result>/login.jsp</result>
+		</action>
+		<action name="Login" class="by.phinc.pmc.controller.LoginAction">
+			<interceptor-ref name="pmcWithoutAuthStack"/>
+			<result name="success" type="redirectAction">Index</result>
+			<result name="admin" type="redirectAction">AdminIndex</result>
+			<result name="input">/login.jsp</result>
+			
+			<result name="redirect" type="redirect">${url}</result>
+		</action>
+		
+		<action name="Logout" class="by.phinc.pmc.controller.LogoutAction">
+			<result name="success" type="redirectAction">LoginForm</result>
+		</action>		
+		
+		<!-- FILE DOWNLOAD -->
+		
+		<action name="DocumentDownload" class="by.phinc.pmc.controller.DownloadDocument">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">fileInputStream</param>
+				<param name="contentDisposition">attachment;filename=${filename}</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>		
+		
+		<!-- EMPLOYEE PAGES -->
+		
+		<action name="Index" class="by.phinc.pmc.controller.MainAction">
+			<result>/empl/main.jsp</result>
+		</action>
+		<action name="AdminIndex" class="by.phinc.pmc.controller.MainAction">
+			<result>/empl/adminMain.jsp</result>
+		</action>
+		<action name="UserProject" class="by.phinc.pmc.controller.ProjectAction">
+			<result>/empl/project.jsp</result>
+		</action>
+		<action name="UserTask" class="by.phinc.pmc.controller.TaskAction">
+			<result>/empl/task.jsp</result>
+		</action>
+		<action name="UserAssignment" class="by.phinc.pmc.controller.AssignmentAction">
+			<result>/empl/assignment.jsp</result>
+		</action>
+		<action name="UserTeam" class="by.phinc.pmc.controller.TeamAction">
+			<result>/empl/teamMember.jsp</result>
+		</action>
+		<action name="UserProjectDocument">
+			<result>/empl/projectDocument.jsp</result>
+		</action>
+		<action name="UserTaskDocument">
+			<result>/empl/taskDocument.jsp</result>
+		</action>
+		<action name="TimeJournal" class="by.phinc.pmc.controller.TimeJournalAction">
+			<result>/empl/timeJournal.jsp</result>
+		</action>
+		
+	</package>
+	
+	<package name="CRUD" namespace="/crud" extends="json-default">
+		
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult">
+   				<param name="root">action</param>
+			</result-type>
+		</result-types>
+		
+		<interceptors>
+			<interceptor name="authentication" class="by.phinc.pmc.action.utils.AuthenticationInterceptor"/>
+			<interceptor name="hibernate" class="by.phinc.pmc.action.utils.HibernateSessionInterceptor"/>
+			<interceptor name="rallback" class="by.phinc.pmc.action.utils.TransactionRallbackInterceptor"/>
+			<interceptor name="accessexception" class="by.phinc.pmc.secure.ExceptionTranslationInterceptor"/>
+			<interceptor name="security" class="by.phinc.pmc.secure.ActionSecurityInterceptor"/>
+			
+			<interceptor-stack name="crudStack">
+				<interceptor-ref name="exception">
+					<param name="logEnabled">true</param>
+					<param name="logLevel">ERROR</param>
+				</interceptor-ref>
+                <!-- 
+                <interceptor-ref name="hibernate"/>
+                <interceptor-ref name="rallback"/>
+                 -->
+                <interceptor-ref name="accessexception"/>
+                <interceptor-ref name="security"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="servletConfig"/>
+                <!--  <interceptor-ref name="authentication"/>-->
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+				<!-- 
+				<interceptor-ref name="paramsPrepareParamsStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+				<interceptor-ref name="authentication"/>
+				 -->
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="crudStack"/>
+		
+		<global-results>
+			<result name="error">/errorPages/error.jsp</result>
+			<!-- <result name="login">/login.jsp</result> -->
+			<result name="login" type="json">
+				<param name="statusCode">420</param>
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">^redirect</param>
+			</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+		<!-- CRUD ACTIONS -->
+		
+		<action name="ProjectCRUD_*" method="{1}" class="by.phinc.pmc.controller.ProjectCRUD">
+			<result name="input">${destination}</result>
+			<result name="success">${destination}</result>
+		</action>
+		
+		<action name="EmployeeCRUD_*" method="{1}" class="by.phinc.pmc.controller.EmployeeCRUD">
+			<result name="input">${destination}</result>
+			<result name="success">${destination}</result>
+		</action>
+		
+		<action name="TaskCRUD_*" method="{1}" class="by.phinc.pmc.controller.TaskCRUD">			
+			<result name="input">${destination}</result>
+			<result name="success">${destination}</result>
+		</action>
+		
+		<action name="TeamCRUD_*" method="{1}" class="by.phinc.pmc.controller.TeamCRUD">			
+			<result name="input">${destination}</result>
+			<result name="success">${destination}</result>
+		</action>
+		
+		<action name="AssignmentCRUD_*" method="{1}" class="by.phinc.pmc.controller.AssignmentCRUD">			
+			<result name="input">${destination}</result>
+			<result name="success">${destination}</result>
+		</action>
+		
+		<action name="ActivityCRUD_*" method="{1}" class="by.phinc.pmc.controller.ActivityCRUD">			
+			<result name="input">${destination}</result>
+			<result name="success">${destination}</result>
+		</action>
+		
+		<action name="ProjectDocumentCRUD_*" method="{1}" class="by.phinc.pmc.controller.ProjectDocumentCRUD">
+			<result name="success">${destination}</result>
+			<result name="input">${destination}</result>
+		</action>
+		
+		<action name="TaskDocumentCRUD_*" method="{1}" class="by.phinc.pmc.controller.TaskDocumentCRUD">
+			<result name="success">${destination}</result>
+			<result name="input">${destination}</result>
+		</action>
+		
+	</package>
+	
+	
+	<package name="JSON" namespace="/json" extends="json-default">
+		
+		<interceptors>
+			<interceptor name="authentication" class="by.phinc.pmc.action.utils.AuthenticationInterceptor"/>
+			<interceptor name="hibernate" class="by.phinc.pmc.action.utils.HibernateSessionInterceptor"/>
+			<interceptor name="rallback" class="by.phinc.pmc.action.utils.TransactionRallbackInterceptor"/>
+			<interceptor name="accessexception" class="by.phinc.pmc.secure.ExceptionTranslationInterceptor"/>
+			<interceptor name="security" class="by.phinc.pmc.secure.ActionSecurityInterceptor"/>
+			
+			<interceptor-stack name="jsonStack">
+				<interceptor-ref name="exception">
+					<param name="logEnabled">true</param>
+     				<param name="logLevel">ERROR</param>
+				</interceptor-ref>
+                <!--  
+                <interceptor-ref name="hibernate"/>   
+                <interceptor-ref name="rallback"/>
+                -->          
+				<!--  <interceptor-ref name="authentication"/>-->
+                <interceptor-ref name="accessexception"/>
+                <interceptor-ref name="security"/>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="fileUpload"/>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                    <param name="excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="debugging"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="jsonStack"/>
+		
+		<global-results>
+			<result name="error" type="json">
+				<param name="ignoreHierarchy">false</param>
+				<param name="statusCode">421</param>
+				<param name="includeProperties">
+					^exception\.message,
+					^exception\.localizedMessage,
+				 	^exceptionStack
+				 </param>
+			</result>
+			<!--  <result name="login">/login.jsp</result> -->
+			<result name="login" type="json">
+				<param name="statusCode">420</param> 
+				<param name="ignoreHierarchy">false</param>
+				<param name="includeProperties">redirect</param>
+			</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings>
+		
+		<action name="ProjectsJSON" class="by.phinc.pmc.controller.ProjectsJSON">
+			<result type="json">
+				<param name="includeProperties">
+					page,
+					rows,
+					records,
+					total,
+					^projects\[\d+\]\.id,
+					^projects\[\d+\]\.name,
+					^projects\[\d+\]\.planStart,
+					^projects\[\d+\]\.status
+				</param>
+			</result>
+		</action>
+		<action name="EmployeesJSON" class="by.phinc.pmc.controller.EmployeesJSONAction">
+			<result type="json">
+				<param name="excludeProperties">
+					^employees\[\d+\]\.email,
+					^employees\[\d+\]\.login,
+					^employees\[\d+\]\.password,
+				</param>
+			</result>
+		</action>
+		<action name="ProjectTeamJSON" class="by.phinc.pmc.controller.TeamJSONAction">
+			<result type="json">
+				<param name="excludeProperties">
+					id,
+					sidx,
+					sord,
+					^team\[\d+\]\.employee,
+					^team\[\d+\]\.project,
+				</param>
+			</result>
+		</action>
+		<action name="ProjectTasksJSON" class="by.phinc.pmc.controller.TasksJSONAction">
+			<result type="json">
+				<param name="includeProperties">
+					page,
+					rows,
+					records,
+					total,
+					^tasks\[\d+\]\.id,
+					^tasks\[\d+\]\.name,
+					^tasks\[\d+\]\.planStart,
+					^tasks\[\d+\]\.status
+				</param>
+			</result>
+		</action>
+		<action name="TaskAssignmentsJSON" class="by.phinc.pmc.controller.TaskAssignmentsJSON">
+			<result type="json">
+				<param name="includeProperties">
+					page,
+					rows,
+					records,
+					total,
+					^assignments\[\d+\]\.id,
+					^assignments\[\d+\]\.name,
+					^assignments\[\d+\]\.status,
+					^assignments\[\d+\]\.planStart,
+					^assignments\[\d+\]\.member\.employee\.name,
+					^assignments\[\d+\]\.member\.role
+				</param>
+			</result>
+		</action>
+		<action name="ProjectDocumentsJSON" class="by.phinc.pmc.controller.ProjectDocumentsJSON">
+			<result type="json">
+				<param name="includeProperties">
+					page,
+					rows,
+					records,
+					total,
+					^documents\[\d+\]\.id,
+					^documents\[\d+\]\.name,
+					^documents\[\d+\]\.description
+				</param>
+			</result>
+		</action>
+		<action name="TaskDocumentsJSON" class="by.phinc.pmc.controller.TaskDocumentsJSON">
+			<result type="json">
+				<param name="includeProperties">
+					page,
+					rows,
+					records,
+					total,
+					^documents\[\d+\]\.id,
+					^documents\[\d+\]\.name,
+					^documents\[\d+\]\.description
+				</param>
+			</result>
+		</action>
+		
+		<!-- USER SPECIFIC DATA -->
+		<action name="UserProjectsJSON" class="by.phinc.pmc.controller.UserProjectsJSON">
+			<result type="json">
+				<param name="excludeProperties">
+					sidx,
+					sord,
+					^projects\[\d+\]\.description,
+					^projects\[\d+\]\.customer,
+					^projects\[\d+\]\.team,
+					^projects\[\d+\]\.tasks,					
+					^projects\[\d+\]\.planDuration,
+					^projects\[\d+\]\.actStart,
+					^projects\[\d+\]\.actDuration
+				</param>
+			</result>
+		</action>
+		<action name="UserAssignmentsJSON" class="by.phinc.pmc.controller.UserAssignmentsJSON">
+			<result type="json">
+				<param name="includeProperties">
+					page,
+					rows,
+					records,
+					total,
+					^assignments\[\d+\]\.id,
+					^assignments\[\d+\]\.name,
+					^assignments\[\d+\]\.status,
+					^assignments\[\d+\]\.planStart,
+					^assignments\[\d+\]\.task\.project\.id,
+					^assignments\[\d+\]\.task\.project\.name,
+				</param>
+			</result>
+		</action>
+		<action name="UserActivityJSON" class="by.phinc.pmc.controller.ActivityJSON">
+			<result type="json">
+				<param name="includeProperties">
+					page,
+					rows,
+					records,
+					total,
+					^activities\[\d+\]\.id,
+					^activities\[\d+\]\.description,
+					^activities\[\d+\]\.startDate,
+					^activities\[\d+\]\.reporter\.name
+				</param>
+			</result>
+		</action>		
+	</package>
+</struts>

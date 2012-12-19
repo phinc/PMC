@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doc:documents xmlns:doc="http://www.phinc.by/pmc/document"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.phinc.by/pmc/document document.xsd">
+	<document id="1">
+		<name><![CDATA[Specification]]></name>
+		<file-name>spec1.doc</file-name>
+		<description><![CDATA[Software Requirements Specification]]></description>
+		<path><![CDATA[c:/temp]]></path>
+		<project id="1"/>
+	</document>
+	<document id="2">
+		<name><![CDATA[Specification]]></name>
+		<file-name>spec2.doc</file-name>
+		<description><![CDATA[Software Requirements Specification]]></description>
+		<path><![CDATA[c:/temp]]></path>
+		<task id="2"/>
+	</document>
+</doc:documents>

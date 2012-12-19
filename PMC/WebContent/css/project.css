@@ -1,0 +1,71 @@
+html {
+    margin:0;
+    padding:0;
+    background:#a7a09a;
+}
+
+body {
+    margin: 0 auto;
+    padding:0;
+    color:#000;
+    max-width: 100%;
+    width: 80em;
+}
+
+.container {
+	background-color:#b0e0e6;
+	border-radius: 4px 4px 4px 4px;
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.1);
+	margin: 16px;
+	padding: 10px 0 0;
+    position: relative;
+    text-align:left;
+}
+
+.buttonPanel {
+	text-align: center;
+}
+
+.loginPanel {
+	float: right;
+}
+
+.leftPanel {
+	float: left;
+	width: 250px;
+	padding: 10px;
+}
+
+.rightPanel {
+	margin-left: 250px;
+	padding: 10px;
+	overflow: auto;
+}
+
+.menuPanel {
+    background: none repeat scroll 0 0 white;
+    border: 1px solid #AAAAAA;
+    border-radius: 4px 4px 4px 4px;
+}
+
+#projectMenu li a:link {
+	border-bottom: 1px dotted #B3B3B3;
+	padding: 1px 8px 4px;
+}
+
+#projectMenu .itemSelected {
+	background: none repeat scroll 0 0 #E87B10;
+}
+
+.underMenuPanel {
+	padding: 10px;
+}
+
+.footer {
+	clear: both;
+	text-align:center;
+}
+
+.error {
+	color: red;
+}

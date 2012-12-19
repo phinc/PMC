@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rl:roles xmlns:rl="http://www.phinc.by/pmc/role"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.phinc.by/pmc/role role.xsd">
+	<role id="1">project manager</role>
+	<role id="2">developer</role>
+</rl:roles>

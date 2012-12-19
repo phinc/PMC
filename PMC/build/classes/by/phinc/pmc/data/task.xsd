@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.phinc.by/pmc/task" 
+		xmlns:tsk="http://www.phinc.by/pmc/task">
+	
+	<xsd:element name="tasks">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="task" type="tsk:TaskType" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="TaskType">
+		<xsd:all>
+			<xsd:element name="short-description" type="xsd:string"/>
+			<xsd:element name="long-description" type="xsd:string"/>
+			<xsd:element name="planned-start-date" type="xsd:date"/>
+			<xsd:element name="planned-duration" type="tsk:PlannedDurationType"/>
+			<xsd:element name="actual-start-date" type="tsk:ActualDateType"/>
+			<xsd:element name="actual-duration" type="tsk:ActualDurationType"/>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="project-id" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="status-id" type="xsd:positiveInteger" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="PlannedDurationType">
+		<xsd:union memberTypes="tsk:EmptyType tsk:DecimalType"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActualDurationType">
+		<xsd:union memberTypes="tsk:EmptyType tsk:ActualDecimalType"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActualDateType">
+		<xsd:union memberTypes="tsk:EmptyType xsd:date"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="EmptyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value=""/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="DecimalType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="1"/>
+			<xsd:minExclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActualDecimalType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="1"/>
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+</xsd:schema>

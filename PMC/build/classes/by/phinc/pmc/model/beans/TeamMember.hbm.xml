@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="by.phinc.pmc.model.beans">
+ <class name="TeamMember" table="team">
+  
+  <id name="id" type="int" column="id" >
+   <generator class="native"/>
+  </id>
+ 
+  <many-to-one  name="project" 
+  				column="project_id"
+  				class="Project"
+  				not-null="true"/>
+  				
+  <property name="role"/>
+  			   
+  <join table="employee_team" optional="true">
+  	<key column="team_id"/>
+  	
+  	<many-to-one name="employee"
+  				column="employee_id"
+  				not-null="true"/>
+  </join>
+  
+ </class>
+</hibernate-mapping>

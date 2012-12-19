@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.phinc.by/pmc/assignment" 
+		xmlns:as="http://www.phinc.by/pmc/assignment">
+		
+	<xsd:element name="assignments">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="assignment" type="as:AssignmentType" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="AssignmentType">
+		<xsd:sequence>
+			<xsd:element name="short-description" type="xsd:string"/>
+			<xsd:element name="long-description" type="xsd:string"/>
+			<xsd:element name="planned-start-date" type="xsd:date"/>
+			<xsd:element name="planned-duration" type="as:PlannedDurationType"/>
+			<xsd:element name="actual-start-date" type="as:ActualDateType"/>
+			<xsd:element name="actual-duration" type="as:ActualDurationType"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="task-id" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="status-id" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="team-member-id" type="xsd:positiveInteger" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="PlannedDurationType">
+		<xsd:union memberTypes="as:EmptyType as:DecimalType"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActualDurationType">
+		<xsd:union memberTypes="as:EmptyType as:ActualDecimalType"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActualDateType">
+		<xsd:union memberTypes="as:EmptyType xsd:date"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="EmptyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value=""/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="DecimalType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="1"/>
+			<xsd:minExclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="ActualDecimalType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="1"/>
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

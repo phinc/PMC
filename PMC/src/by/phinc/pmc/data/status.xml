@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<st:statuses xmlns:st="http://www.phinc.by/pmc/status"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.phinc.by/pmc/status status.xsd">
+	<status id="1">Not started</status>
+	<status id="2">In progress</status>
+	<status id="3">Completed</status>
+	<status id="4">Cancelled</status>
+	<status id="5">On hold</status>
+</st:statuses>

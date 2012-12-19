@@ -1,0 +1,110 @@
+<?xml version="1.0"?><tm:teams xmlns:tm="http://www.phinc.by/pmc/team" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phinc.by/pmc/team team.xsd">
+	<team-member id="1" employee-id="1" project-id="1">
+		<role>Project manager</role>
+	</team-member>
+	<team-member id="3" employee-id="1" project-id="2">
+		<role>Developer</role>
+	</team-member>
+	<team-member id="5" employee-id="3" project-id="1">
+		<role>designer+</role>
+	</team-member>
+<team-member id="6" employee-id="3" project-id="1">
+		<role>unknown 1</role>
+	</team-member>
+<team-member id="7" employee-id="2" project-id="1">
+		<role>new comer78</role>
+	</team-member>
+<team-member id="8" employee-id="10" project-id="2">
+		<role>yhguy</role>
+	</team-member>
+<team-member id="9" employee-id="8" project-id="2">
+		<role>you</role>
+	</team-member>
+<team-member id="11" employee-id="4" project-id="2">
+		<role>yijl</role>
+	</team-member>
+<team-member id="12" employee-id="10" project-id="2">
+		<role>yhguy</role>
+	</team-member>
+<team-member id="13" employee-id="8" project-id="2">
+		<role>you</role>
+	</team-member>
+<team-member id="27" employee-id="1" project-id="3">
+		<role>1</role>
+	</team-member>
+<team-member id="30" employee-id="1" project-id="3">
+		<role>2</role>
+	</team-member>
+<team-member id="31" employee-id="1" project-id="3">
+		<role>33</role>
+	</team-member>
+<team-member id="32" employee-id="1" project-id="3">
+		<role>4</role>
+	</team-member>
+<team-member id="33" employee-id="11" project-id="1">
+		<role>workeree</role>
+	</team-member>
+<team-member id="34" employee-id="10" project-id="1">
+		<role>gyyy</role>
+	</team-member>
+<team-member id="35" employee-id="5" project-id="3">
+		<role>chief</role>
+	</team-member>
+<team-member id="36" employee-id="6" project-id="3">
+		<role>df</role>
+	</team-member>
+<team-member id="37" employee-id="5" project-id="3">
+		<role>4</role>
+	</team-member>
+<team-member id="38" employee-id="11" project-id="3">
+		<role>fddg</role>
+	</team-member>
+<team-member id="39" employee-id="6" project-id="1">
+		<role>78</role>
+	</team-member>
+<team-member id="40" employee-id="7" project-id="1">
+		<role>6</role>
+	</team-member>
+<team-member id="41" employee-id="12" project-id="1">
+		<role>rgiuyt</role>
+	</team-member>
+<team-member id="42" employee-id="2" project-id="8">
+		<role>main pickuper</role>
+	</team-member>
+<team-member id="43" employee-id="10" project-id="8">
+		<role>junior pickuper</role>
+	</team-member>
+<team-member id="44" employee-id="6" project-id="14">
+		<role>Project manager</role>
+	</team-member>
+<team-member id="45" employee-id="1" project-id="4">
+		<role>Project manager</role>
+	</team-member>
+<team-member id="46" employee-id="1" project-id="15">
+		<role>Project manager</role>
+	</team-member>
+<team-member id="47" employee-id="12" project-id="16">
+		<role>project manager</role>
+	</team-member>
+<team-member id="48" employee-id="6" project-id="16">
+		<role>employee</role>
+	</team-member>
+<team-member id="49" employee-id="1" project-id="1">
+		<role>project manager</role>
+	</team-member>
+<team-member id="50" employee-id="6" project-id="1">
+		<role>developer</role>
+	</team-member>
+<team-member id="51" employee-id="14" project-id="13">
+		<role>project manager</role>
+	</team-member>
+<team-member id="52" employee-id="8" project-id="10">
+		<role>project manager</role>
+	</team-member>
+<team-member id="53" employee-id="12" project-id="10">
+		<role>designer</role>
+	</team-member>
+<team-member id="54" project-id="9" employee-id="1">
+		<role>project manager</role>
+	</team-member>
+</tm:teams>

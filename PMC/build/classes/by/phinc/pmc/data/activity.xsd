@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.phinc.by/pmc/activity" 
+		xmlns:act="http://www.phinc.by/pmc/activity" >
+	
+	<xsd:element name="activities">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="activity" type="act:ActivityType" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<xsd:complexType name="ActivityType">
+		<xsd:all>
+			<xsd:element name="description" type="xsd:string"/>
+			<xsd:element name="start-date" type="xsd:date"/>
+			<xsd:element name="duration" type="act:DurationType"/>
+			<xsd:element name="reporter">
+				<xsd:complexType>
+					<xsd:attribute name="employee-id" type="xsd:positiveInteger" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:all>
+		<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+		<xsd:attribute name="assignment-id" type="xsd:positiveInteger" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="DurationType">
+		<xsd:union memberTypes="act:EmptyType act:DecimalType"/>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="EmptyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value=""/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="DecimalType">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:fractionDigits value="1"/>
+			<xsd:minExclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+</xsd:schema>

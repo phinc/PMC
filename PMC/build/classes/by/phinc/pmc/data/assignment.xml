@@ -1,0 +1,82 @@
+<?xml version="1.0"?><as:assignments xmlns:as="http://www.phinc.by/pmc/assignment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phinc.by/pmc/assignment assignment.xsd">
+	<assignment id="1" team-member-id="1" task-id="1" status-id="2">
+		<short-description><![CDATA[XML database creation]]></short-description>
+		<long-description><![CDATA[Create XML database for storing project data]]></long-description>
+		<planned-start-date>2012-05-03</planned-start-date>
+		<planned-duration>14.5</planned-duration>
+		<actual-start-date>2012-05-03</actual-start-date>
+		<actual-duration>12.7</actual-duration>
+	</assignment>
+<assignment id="2" team-member-id="34" task-id="1" status-id="1">
+		<short-description><![CDATA[SQL database creation]]></short-description>
+		<long-description><![CDATA[Create SQL database for storing project data]]></long-description>
+		<planned-start-date>2012-05-08</planned-start-date>
+		<planned-duration>14.0</planned-duration>
+		<actual-start-date>2012-05-08</actual-start-date>
+		<actual-duration>344.0</actual-duration>
+	</assignment>
+<assignment id="3" team-member-id="43" task-id="16" status-id="1">
+		<short-description><![CDATA[to have enough rest]]></short-description>
+		<long-description><![CDATA[It's a good idea to sleep much before going to the forest]]></long-description>
+		<planned-start-date>2012-07-01</planned-start-date>
+		<planned-duration>9.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</assignment>
+<assignment team-member-id="42" id="4" task-id="16" status-id="5">
+		<short-description><![CDATA[check if there is sunny weather]]></short-description>
+		<long-description><![CDATA[take a gear to protect yourself from a rain]]></long-description>
+		<planned-start-date>2012-07-01</planned-start-date>
+		<planned-duration>0.5</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</assignment>
+<assignment team-member-id="44" id="5" task-id="17" status-id="1">
+		<short-description><![CDATA[Database creationn]]></short-description>
+		<long-description><![CDATA[dff gt df]]></long-description>
+		<planned-start-date>2008-11-26</planned-start-date>
+		<planned-duration>0.2</planned-duration>
+		<actual-start-date>2012-04-22</actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</assignment>
+<assignment team-member-id="45" id="6" task-id="18" status-id="2">
+		<short-description><![CDATA[assignment]]></short-description>
+		<long-description><![CDATA[assignment desc]]></long-description>
+		<planned-start-date>2001-05-14</planned-start-date>
+		<planned-duration>11.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</assignment>
+<assignment id="7" team-member-id="47" task-id="19" status-id="1">
+		<short-description><![CDATA[aaaaaaaaaaaa]]></short-description>
+		<long-description><![CDATA[jjjjjjjjjjjjjjjjj]]></long-description>
+		<planned-start-date>1987-12-20</planned-start-date>
+		<planned-duration>8.0</planned-duration>
+		<actual-start-date>2010-10-10</actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</assignment>
+<assignment team-member-id="48" id="8" task-id="19" status-id="1">
+		<short-description><![CDATA[jghghf]]></short-description>
+		<long-description><![CDATA[kl;kjki]]></long-description>
+		<planned-start-date>2014-03-05</planned-start-date>
+		<planned-duration>8.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</assignment>
+<assignment id="9" team-member-id="51" task-id="20" status-id="1">
+		<short-description><![CDATA[dyh]]></short-description>
+		<long-description><![CDATA[fgh]]></long-description>
+		<planned-start-date>2009-09-09</planned-start-date>
+		<planned-duration>9.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>159.0</actual-duration>
+	</assignment>
+<assignment id="10" status-id="1" task-id="21" team-member-id="53">
+		<short-description><![CDATA[new assignment]]></short-description>
+		<long-description><![CDATA[jjjj]]></long-description>
+		<planned-start-date>2000-08-09</planned-start-date>
+		<planned-duration>7.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</assignment>
+</as:assignments>

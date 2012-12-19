@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="by.phinc.pmc.model.beans">
+ <class name="Activity" table="activity">
+  
+  <id name="id" type="int" column="id" >
+   <generator class="native"/>
+  </id>
+ 
+  <many-to-one name="reporter" 
+  				 column="employee_id"
+  				 class="Employee"
+  				 update="true"
+  				 insert="true"/>
+ 
+  <many-to-one  name="assignment" 
+  				column="assignment_id"
+  				class="Assignment"
+  				not-null="true"/>
+  
+  <property name="description"/>
+  
+  <property name="startDate" type="date">
+  	<column name="start_date"/>
+  </property>
+  
+  <property name="duration">
+  	<column name="duration"/>
+  </property>
+  
+ </class>
+</hibernate-mapping>

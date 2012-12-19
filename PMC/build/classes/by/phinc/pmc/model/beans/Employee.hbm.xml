@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+ <class name="by.phinc.pmc.model.beans.Employee" table="employee" >
+  <id name="id" type="int" column="id" >
+   <generator class="native"/>
+  </id>
+ 
+  <property name="firstName">
+   <column name="first_name" />
+  </property>
+  <property name="lastName">
+   <column name="last_name"/>
+  </property>
+  <property name="email">
+   <column name="email"/>
+  </property>
+  <property name="login">
+   <column name="login" unique="true"/>
+  </property>
+  <property name="password">
+   <column name="password"/>
+  </property>
+  <property name="post">
+   <column name="post"/>
+  </property>
+  
+  <set name="authorities"
+  	   table="authorities"
+  	   sort="natural"
+  	   lazy="false"
+  	   cascade="save-update, delete">
+  	   
+  	   <key column="id"/>
+  	   <composite-element class="by.phinc.pmc.secure.GrantedAuthorityImpl">
+  	    	<property name="authority" column="authority" not-null="true"/>
+  	    </composite-element>
+  	   
+  </set>
+  
+ </class>
+</hibernate-mapping>

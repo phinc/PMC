@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.phinc.by/pmc/team" 
+	xmlns:tm="http://www.phinc.by/pmc/team">
+	
+	<xsd:element name="teams">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="team-member" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:all>
+							<xsd:element name="role" type="xsd:string"/>
+						</xsd:all>
+						<xsd:attribute name="id" type="xsd:positiveInteger" use="required"/>
+						<xsd:attribute name="project-id" type="xsd:positiveInteger" use="required"/>
+						<xsd:attribute name="employee-id" type="xsd:positiveInteger" use="required"/>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	
+</xsd:schema>

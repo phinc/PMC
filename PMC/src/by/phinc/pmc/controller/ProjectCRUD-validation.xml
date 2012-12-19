@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+  <field name="name">
+  	<field-validator type="required">
+  		<message key="project.name.required"/>
+  	</field-validator>
+  </field>
+  <field name="planDuration">
+     <field-validator type="conversion">
+        <param name="repopulateField">true</param>
+        <message>Conversion Error (Float Wanted)</message>
+     </field-validator>
+     <field-validator type="required">
+     	<message key="project.planDuration.required"/>
+     </field-validator>
+  </field>
+  <field name="actDuration">
+     <field-validator type="conversion">
+        <param name="repopulateField">true</param>
+        <message >Conversion Error (Float Wanted)</message>
+     </field-validator>
+  </field>
+</validators>

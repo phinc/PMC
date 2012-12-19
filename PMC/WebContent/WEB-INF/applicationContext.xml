@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+	
+	
+	<!-- Enabling AspectJ support -->
+	 
+	<aop:aspectj-autoproxy/>
+	
+	<bean class="by.phinc.pmc.secure.AspectSecurityInterceptor">
+		<property name="accessDecisionManager" ref="accessDecisionManager"/>
+		<property name="authenticationManager" ref="authenticationManager"/>
+	</bean>
+	
+	<bean id="accessDecisionManager" class="by.phinc.pmc.secure.AccessDecisionManagerImpl">
+		<property name="voters">
+			<list>
+				<ref bean="projectSecurityVoter"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="projectSecurityVoter" class="by.phinc.pmc.secure.ProjectSecurityVoter"></bean>
+	
+	<bean id="authenticationManager" class="by.phinc.pmc.secure.AuthenticationManagerImpl">
+		<property name="userDetailsService" ref="userDetailsService"/>
+	</bean>
+	
+	<!--
+	<bean class="by.phinc.pmc.model.beans.proxy.ModelProxingAspect"></bean>
+	 -->
+	 
+	<!-- Looks for annotations on beans -->
+	<!--  
+	<context:annotation-config />
+	-->
+	
+	<!-- Scans the classpath of this application for @Components to deploy as beans -->
+	<context:component-scan base-package="by.phinc.pmc" />
+	 
+	<!-- open to use xml data source instead of sql data source -->
+	<!-- 
+	<bean id="daoFactory" class="by.phinc.pmc.factory.XmlDAOFactory">
+		<property name="proxyFactory">
+			<bean class="by.phinc.pmc.model.beans.proxy.XmlProxyFactory"/>
+		</property>
+	</bean>
+	-->	
+	
+	<bean id="daoFactory" class="by.phinc.pmc.factory.HibernateDAOFactory">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	
+	
+	<!-- SERVICE LAYER  -->
+	
+	<bean id="abstractService" abstract="true" class="by.phinc.pmc.service.AbstractService">
+		<property name="daoFactory" ref="daoFactory"/>
+	</bean>
+	
+	<bean id="projectService" class="by.phinc.pmc.service.ProjectServiceImpl"
+		  parent="abstractService"/>
+	
+	<bean id="taskService" class="by.phinc.pmc.service.TaskServiceImpl"
+		  parent="abstractService"/>
+	
+	<bean id="assignmentService" class="by.phinc.pmc.service.AssignmentServiceImpl"
+		  parent="abstractService"/>
+	
+	<bean id="activityService" class="by.phinc.pmc.service.ActivityServiceImpl"
+		  parent="abstractService"/>
+		  
+	<bean id="employeeService" class="by.phinc.pmc.service.EmployeeServiceImpl"
+		  parent="abstractService"/>
+		  
+	<bean id="documentService" class="by.phinc.pmc.service.DocumentServiceImpl"
+		  parent="abstractService"/>
+		  
+	<bean id="teamService" class="by.phinc.pmc.service.TeamServiceImpl"
+		  parent="abstractService"/>
+	
+	<bean id="userDetailsService" class="by.phinc.pmc.service.UserDetailsService"
+		  parent="abstractService"/>
+	
+	<!-- PERSISTENCE LAYER -->
+	
+	<bean id="projectDAO" class="by.phinc.pmc.model.dao.ProjectXmlDAOImpl">
+		<property name="teamDAO" ref="teamDAO"/>
+		<property name="taskDAO" ref="taskDAO"/>
+		<property name="documentDAO" ref="documentDAO"/>
+	</bean>
+	
+	<bean id="teamDAO" class="by.phinc.pmc.model.dao.TeamXmlDAOImpl">
+	</bean>
+	
+	<bean id="taskDAO" class="by.phinc.pmc.model.dao.TaskXmlDAOImpl">
+		<property name="assignmentDAO" ref="assignmentDAO"/>
+		<property name="documentDAO" ref="documentDAO"/>
+	</bean>
+	
+	<bean id="assignmentDAO" class="by.phinc.pmc.model.dao.AssignmentXmlDAOImpl">
+		<property name="activityDAO" ref="activityDAO"/>
+	</bean>
+	
+	<bean id="activityDAO" class="by.phinc.pmc.model.dao.ActivityXmlDAOImpl">
+	</bean>
+	
+	<bean id="documentDAO" class="by.phinc.pmc.model.dao.DocumentXmlDAOImpl">
+	</bean>
+	
+	<bean id="employeeDAO" class="by.phinc.pmc.model.dao.EmployeeXmlDAOImpl">
+	</bean>
+	
+	<!-- ENTITIES -->
+	
+	<bean id="projectEntity" class="by.phinc.pmc.model.beans.Project"></bean>
+	
+	<!-- 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	    <property name="url" value="jdbc:mysql://localhost/pmc"/>
+	    <property name="username" value="root"/>
+	    <property name="password" value=""/>
+  	</bean>
+  	
+  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	    <property name="url" value="jdbc:mysql://mihapc/pmc"/>	     
+	    <property name="username" value="ira"/>
+	    <property name="password" value="ira"/>
+  	</bean>
+  	-->
+  	<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/pmc"/>
+	
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource"/>
+	    <property name="mappingResources">
+	      <list>
+	        <value>by/phinc/pmc/model/beans/Employee.hbm.xml</value>
+	        <value>by/phinc/pmc/model/beans/Project.hbm.xml</value>
+	        <value>by/phinc/pmc/model/beans/Task.hbm.xml</value>
+	        <value>by/phinc/pmc/model/beans/Assignment.hbm.xml</value>
+	        <value>by/phinc/pmc/model/beans/TeamMember.hbm.xml</value>
+	        <value>by/phinc/pmc/model/beans/Activity.hbm.xml</value>
+	        <value>by/phinc/pmc/model/beans/Document.hbm.xml</value>
+	      </list>
+	    </property>
+	    <property name="hibernateProperties">
+	      <value>
+	      hibernate.dialect=org.hibernate.dialect.MySQLDialect
+	      hibernate.show_sql=true
+	      </value>
+	    </property>
+	</bean>
+  
+  <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+  	<property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+  <!-- provide annotation-based transaction management -->
+  <tx:annotation-driven/>
+  
+</beans>

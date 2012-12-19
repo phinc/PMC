@@ -1,0 +1,146 @@
+<?xml version="1.0"?><tsk:tasks xmlns:tsk="http://www.phinc.by/pmc/task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phinc.by/pmc/task task.xsd">
+	<task id="1" project-id="1" status-id="2">
+		<short-description><![CDATA[Database creationn]]></short-description>
+		<long-description><![CDATA[Create XML and SQL database for storing project data]]></long-description>
+		<planned-start-date>2012-05-03</planned-start-date>
+		<planned-duration>19.0</planned-duration>
+		<actual-start-date>2012-05-03</actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="2" status-id="1" project-id="1">
+		<short-description><![CDATA[Application structure development]]></short-description>
+		<long-description><![CDATA[Application structure development]]></long-description>
+		<planned-start-date>2012-05-06</planned-start-date>
+		<planned-duration>18</planned-duration>
+		<actual-start-date>2012-05-06</actual-start-date>
+		<actual-duration></actual-duration>
+	</task>
+<task id="5" status-id="2" project-id="1">
+		<short-description><![CDATA[coding]]></short-description>
+		<long-description><![CDATA[long coding]]></long-description>
+		<planned-start-date>2014-12-13</planned-start-date>
+		<planned-duration>14.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="6" project-id="2" status-id="1">
+		<short-description><![CDATA[task]]></short-description>
+		<long-description><![CDATA[task description]]></long-description>
+		<planned-start-date>2012-03-14</planned-start-date>
+		<planned-duration>18.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="7" status-id="5" project-id="1">
+		<short-description><![CDATA[testing]]></short-description>
+		<long-description><![CDATA[module testing]]></long-description>
+		<planned-start-date>2012-12-23</planned-start-date>
+		<planned-duration>27.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="9" status-id="1" project-id="1">
+		<short-description><![CDATA[introduction]]></short-description>
+		<long-description><![CDATA[manufacturing introduction]]></long-description>
+		<planned-start-date>2012-03-14</planned-start-date>
+		<planned-duration>12.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="11" status-id="1" project-id="3">
+		<short-description><![CDATA[Requirement specification]]></short-description>
+		<long-description><![CDATA[Drat development of RS and la-la]]></long-description>
+		<planned-start-date>2010-02-14</planned-start-date>
+		<planned-duration>99.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="12" project-id="1" status-id="1">
+		<short-description><![CDATA[requirement spec]]></short-description>
+		<long-description><![CDATA[requirement spec]]></long-description>
+		<planned-start-date>2009-09-17</planned-start-date>
+		<planned-duration>7.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="13" status-id="1" project-id="3">
+		<short-description><![CDATA[testing]]></short-description>
+		<long-description><![CDATA[dfgdszfg]]></long-description>
+		<planned-start-date>2006-03-11</planned-start-date>
+		<planned-duration>0.7</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="14" status-id="1" project-id="3">
+		<short-description><![CDATA[new]]></short-description>
+		<long-description><![CDATA[task description1]]></long-description>
+		<planned-start-date>2004-09-18</planned-start-date>
+		<planned-duration>7.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="15" project-id="5" status-id="1">
+		<short-description><![CDATA[fgh]]></short-description>
+		<long-description><![CDATA[fgh]]></long-description>
+		<planned-start-date>2003-03-18</planned-start-date>
+		<planned-duration>8.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="16" project-id="8" status-id="1">
+		<short-description><![CDATA[Pick up mushrooms]]></short-description>
+		<long-description><![CDATA[Go into hte forest and search for some mushrooms and if there some then take it to the busket]]></long-description>
+		<planned-start-date>2012-07-01</planned-start-date>
+		<planned-duration>3.5</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="17" status-id="5" project-id="14">
+		<short-description><![CDATA[gain data]]></short-description>
+		<long-description><![CDATA[obtain necessary information]]></long-description>
+		<planned-start-date>2010-10-30</planned-start-date>
+		<planned-duration>18.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="18" project-id="4" status-id="1">
+		<short-description><![CDATA[task]]></short-description>
+		<long-description><![CDATA[long task desc]]></long-description>
+		<planned-start-date>2002-02-17</planned-start-date>
+		<planned-duration>17.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="19" status-id="1" project-id="16">
+		<short-description><![CDATA[dddddddddddd]]></short-description>
+		<long-description><![CDATA[jjjjjjjjjjjjjjj]]></long-description>
+		<planned-start-date>2001-05-14</planned-start-date>
+		<planned-duration>3.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="20" status-id="1" project-id="13">
+		<short-description><![CDATA[rte]]></short-description>
+		<long-description><![CDATA[sdg]]></long-description>
+		<planned-start-date>2002-02-22</planned-start-date>
+		<planned-duration>1.0</planned-duration>
+		<actual-start-date>2008-07-17</actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+<task id="21" project-id="10" status-id="1">
+		<short-description><![CDATA[fgx]]></short-description>
+		<long-description><![CDATA[cvvv]]></long-description>
+		<planned-start-date>2025-05-25</planned-start-date>
+		<planned-duration>25.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>25.0</actual-duration>
+	</task>
+<task id="22" status-id="4" project-id="9">
+		<short-description><![CDATA[taska-kaska]]></short-description>
+		<long-description><![CDATA[taska-kaska]]></long-description>
+		<planned-start-date>2023-03-12</planned-start-date>
+		<planned-duration>11.0</planned-duration>
+		<actual-start-date></actual-start-date>
+		<actual-duration>0.0</actual-duration>
+	</task>
+</tsk:tasks>

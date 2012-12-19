@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping package="by.phinc.pmc.model.beans">
+ <class name="Task" table="task" >
+  
+  <id name="id" type="int" column="id" >
+   <generator class="native"/>
+  </id>
+  
+  <property name="name" not-null="true">
+   <column name="short_description" />
+  </property>
+  <property name="description">
+   <column name="long_description"/>
+  </property>
+  <property name="planStart" type="date">
+   <column name="planned_start_date"/>
+  </property>
+  <property name="planDuration">
+   <column name="planned_duration"/>
+  </property>
+  <property name="actStart" type="date">
+   <column name="actual_start_date"/>
+  </property>
+  <property name="actDuration">
+   <column name="actual_duration"/>
+  </property>
+  <property name="status" not-null="true">
+	 <type name="org.hibernate.type.EnumType">
+	    <param name="enumClass">
+	      by.phinc.pmc.model.beans.Status
+	    </param>
+	    <param name="type">12</param>
+	 </type>
+  </property>
+  
+  <set name="documents"
+  	   table="taskDocument"
+  	   sort="natural"
+  	   cascade="save-update, delete">
+  	<key column="task_id"/>
+  	<many-to-many class="Document"
+  				  column="document_id"
+  				  unique="true"/>
+  </set>
+  
+  <many-to-one name="project"
+  				class="Project"
+  				column="project_id"
+  				not-null="true"/>
+  	
+  <set name="assignments" 
+	   inverse="true"
+	   sort="natural"
+	   cascade="save-update, delete">
+	<key column="task_id"/>
+	<one-to-many class="Assignment"/>
+  </set>
+  
+ </class>
+</hibernate-mapping>

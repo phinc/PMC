@@ -1,0 +1,25 @@
+<?xml version="1.0"?><act:activities xmlns:act="http://www.phinc.by/pmc/activity" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.phinc.by/pmc/activity activity.xsd">
+	<activity id="1" assignment-id="1">
+		<description><![CDATA[XML file project.xml was created]]></description>
+		<start-date>2012-05-03</start-date>
+		<duration>1.5</duration>
+		<reporter employee-id="1"></reporter>
+	</activity>
+	<activity id="2" assignment-id="1">
+		<description><![CDATA[XML file assignment.xml was created]]></description>
+		<start-date>2012-05-03</start-date>
+		<duration>1</duration>
+		<reporter employee-id="1"></reporter>
+	</activity>
+<activity id="4" assignment-id="4">
+		<description><![CDATA[bought special creme against inscts]]></description>
+		<start-date>2012-06-02</start-date>
+		<duration>0.4</duration>
+<reporter employee-id="1"></reporter>	</activity>
+<activity id="5" assignment-id="10">
+		<description><![CDATA[vcxb]]></description>
+		<start-date>2003-02-14</start-date>
+		<duration>7.0</duration>
+	<reporter employee-id="1"></reporter>
+	</activity>
+</act:activities>

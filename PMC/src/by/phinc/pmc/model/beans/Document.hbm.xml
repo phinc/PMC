@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="by.phinc.pmc.model.beans">
+	<class name="Document" table="document">
+		<id name="id" type="int" column="id" >
+   			<generator class="native"/>
+  		</id>
+  		
+  		<property name="name" type="string" not-null="true"/>
+	  	<property name="filename" type="string" not-null="true"/>
+	  	<property name="path" type="string"  not-null="true"/>
+	  	<property name="description" type="string"  not-null="true"/>
+	  	
+	</class>
+</hibernate-mapping>
